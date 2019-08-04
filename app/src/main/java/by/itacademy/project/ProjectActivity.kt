@@ -7,8 +7,6 @@ class ProjectActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project)
-                //  дордлгр
+
     }
-    fun f12qwf(){}
-    fun f1287687qwf(){}
 }
