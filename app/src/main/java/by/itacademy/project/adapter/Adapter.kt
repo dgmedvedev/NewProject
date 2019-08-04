@@ -28,7 +28,7 @@ RecyclerView.Adapter<Holder>(){
         return items.size
     }
 
-    fun updateList(newItems:List<Note>){
+    fun updateList(newItems:MutableList<Note>){
         items = newItems
         notifyDataSetChanged()
     }

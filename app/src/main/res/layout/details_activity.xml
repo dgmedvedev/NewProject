@@ -82,7 +82,7 @@
             android:layout_marginStart="90dp"
             android:foregroundGravity="center_vertical"
             android:gravity="center_horizontal"
-            android:text="@string/add_txt_view" />
+            android:text="@string/delete_txt_view" />
 
     </LinearLayout>
 </RelativeLayout>
