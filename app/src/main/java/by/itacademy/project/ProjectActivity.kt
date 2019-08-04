@@ -8,15 +8,24 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import by.itacademy.project.adapter.Adapter
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 
 class ProjectActivity : Activity(), Adapter.onClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private var adapter: Adapter? = null
+    private lateinit var adView: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project)
+
+        MobileAds.initialize(this)
+        adView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
 
         recyclerView = findViewById(R.id.recyclerView)
 
