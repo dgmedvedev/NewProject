@@ -18,9 +18,20 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
     private var adapter: Adapter? = null
     private lateinit var adView: AdView
 
+    private lateinit var prefsManager: AppPrefManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project)
+
+        prefsManager = AppPrefManager(this)
+        val listJson = prefsManager.getUserText()
+        // prefsManager работает и сохраняет listJson, проверено
+
+        /*
+        val listNotes: Note = Gson().fromJson<Note>(listJson, Note::class.java)
+        здесь нужно подумать, как преобразовать не в Note, а MutableList<Note>
+        */
 
         MobileAds.initialize(this)
         adView = findViewById(R.id.adView)
@@ -32,13 +43,25 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.isNestedScrollingEnabled = false
-        adapter = Adapter(Singleton.getListNotes(), this)
+        adapter = Adapter(Singleton.getFillListNotes(), this)
+        // adapter = Adapter(Singleton.getData(listNotes), this)
         recyclerView.adapter = adapter
 
         findViewById<ImageView>(R.id.addButton).setOnClickListener {
             val intent = Intent(this, NoteEditActivity::class.java)
             startActivity(intent)
         }
+    }
+
+/*
+    fun jsonToNote(listJson: String): MutableList<Note>{
+        return
+    }
+*/
+
+    override fun onStop() {
+        super.onStop()
+        prefsManager.saveUserText(Singleton.listToJson())
     }
 
     override fun onResume() {

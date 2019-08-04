@@ -14,9 +14,33 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
+
+    signingConfigs {
+        release {
+            storeFile file("D:/medvedev/keys_and_apk/dev_project_keystory.jks")
+            storePassword "123456"
+            keyAlias "project"
+            keyPassword "123456"
+        }
+        debug {
+            storeFile file("D:/medvedev/keys_and_apk/dev_project_keystory.jks")
+            storePassword "123456"
+            keyAlias "project"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
+            // TODO to release
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.debug
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -24,12 +48,14 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.2'
 
     implementation 'com.google.code.gson:gson:2.8.5'
+
+    def multidex_version = "2.0.1"
+    implementation "androidx.multidex:multidex:$multidex_version"
 
     def okHttpVersion = "4.0.0"
     implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
