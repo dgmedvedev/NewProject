@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:background="@color/itemNoApprove"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/headerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textSize="18sp"
+        tools:text="Заголовок" />
+
+    <TextView
+        android:id="@+id/descriptionItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        tools:text="Это контент из TextView 'Item_dz6_student'Это контент из TextView 'Item_dz6_student'
+        Это контент из TextView 'Item_dz6_student'Это контент из TextView 'Item_dz6_student' " />
+
+</LinearLayout>
