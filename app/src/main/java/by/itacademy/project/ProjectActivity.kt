@@ -9,5 +9,5 @@ class ProjectActivity : Activity() {
         setContentView(R.layout.activity_project)
                 //  дордлгр
     }
-    fun fwqfqwf(){}
+    fun f12qwf(){}
 }
