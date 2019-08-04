@@ -20,8 +20,6 @@ object Singleton {
         )
     }
 
-
-
     fun addNotes(note: Note) {
         listNotes.add(note)
     }
@@ -31,5 +29,9 @@ object Singleton {
 
     fun getNoteById(id: String?): Note? {
         return listNotes.find { it.id == id }
+    }
+
+    fun deleteNote(id: String){
+        listNotes.remove(getNoteById(id))
     }
 }

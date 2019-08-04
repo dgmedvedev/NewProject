@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import android.widget.Toast
+import kotlinx.android.synthetic.main.details_activity.*
 
 class NoteDetailsActivity : Activity() {
 
@@ -43,11 +44,10 @@ class NoteDetailsActivity : Activity() {
             nameNoteTextView.text = user.name
             textNoteTextView.text = user.text
         }
-/*
-        edit.setOnClickListener {
-            startActivity(Dz6StudentEditActivity.getIntent(this@Dz6StudentDetailsActivity, idStudent))
-            this.finish()
+
+        successButton.setOnClickListener {
+            Singleton.deleteNote(id!!)
+            onBackPressed()
         }
-        */
     }
 }

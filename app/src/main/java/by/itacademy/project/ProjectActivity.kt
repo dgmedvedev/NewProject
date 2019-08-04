@@ -13,17 +13,7 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private var adapter: Adapter? = null
-    /*
-        companion object {
-            private const val ID_STUDENT = "ID_STUDENT"
 
-            fun getIntent(context: Context, idStudent: Long): Intent {
-                val intent = Intent(context, Dz6StudentListActivity::class.java)
-                intent.putExtra(ID_STUDENT, idStudent)
-                return intent
-            }
-        }
-        */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_project)
@@ -36,7 +26,7 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         adapter = Adapter(Singleton.getListNotes(), this)
         recyclerView.adapter = adapter
 
-        findViewById<ImageView>(R.id.addButton).setOnClickListener{
+        findViewById<ImageView>(R.id.addButton).setOnClickListener {
             val intent = Intent(this, NoteEditActivity::class.java)
             startActivity(intent)
         }
@@ -46,13 +36,7 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         super.onResume()
         adapter?.updateList(Singleton.getListNotes())
     }
-/*
-    override fun onItemClick(item: Note) {
-        val intent = Intent(this,NoteDetailsActivity::class.java)
-        intent.putExtra("id", item.id)
-        startActivity(intent)
-    }
-*/
+
     override fun onItemClick(item: Note) {
         Toast.makeText(this, item.name, Toast.LENGTH_SHORT).show()
         startActivity(NoteDetailsActivity.getIntent(this@ProjectActivity, item.id))

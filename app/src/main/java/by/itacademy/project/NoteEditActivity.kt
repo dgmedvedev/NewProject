@@ -2,12 +2,10 @@ package by.itacademy.project
 
 import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import android.widget.EditText
 import kotlinx.android.synthetic.main.edit_activity.*
 
 class NoteEditActivity : Activity() {
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +24,5 @@ class NoteEditActivity : Activity() {
             Singleton.addNotes(newNotes)
             onBackPressed()
         }
-
-        
     }
 }
