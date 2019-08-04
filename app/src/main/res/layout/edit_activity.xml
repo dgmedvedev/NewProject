@@ -36,7 +36,6 @@
         android:layout_marginTop="45dp"
         android:layout_marginEnd="40dp"
         android:background="@drawable/edit_text_shape"
-        android:ellipsize="start"
         android:gravity="top"
         android:hint="@string/enter_description"
         android:paddingStart="5dp"
@@ -54,13 +53,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="90dp"
+            android:padding="5dp"
             android:src="@drawable/ic_cancel" />
 
         <TextView
             android:id="@+id/cancelTxtView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="85dp"
             android:text="@string/cancel" />
 
     </LinearLayout>
@@ -78,6 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="90dp"
+            android:padding="5dp"
             android:src="@drawable/ic_save" />
 
         <TextView
