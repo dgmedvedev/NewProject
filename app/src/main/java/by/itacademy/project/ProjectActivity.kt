@@ -10,4 +10,5 @@ class ProjectActivity : Activity() {
                 //  дордлгр
     }
     fun f12qwf(){}
+    fun f1287687qwf(){}
 }
