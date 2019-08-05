@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project</string>
+    <string name="app_name">Заметки</string>
     <string name="notes_name_app">Заметки</string>
     <string name="add_txt_view">Добавить</string>
     <string name="delete_txt_view">Удалить</string>
