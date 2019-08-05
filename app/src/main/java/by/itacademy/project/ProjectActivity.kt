@@ -25,13 +25,6 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         setContentView(R.layout.activity_project)
 
         prefsManager = AppPrefManager(this)
-        val listJson = prefsManager.getUserText()
-        // prefsManager работает и сохраняет listJson, проверено
-
-        /*
-        val listNotes: Note = Gson().fromJson<Note>(listJson, Note::class.java)
-        здесь нужно подумать, как преобразовать не в Note, а MutableList<Note>
-        */
 
         MobileAds.initialize(this)
         adView = findViewById(R.id.adView)
@@ -44,7 +37,6 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.isNestedScrollingEnabled = false
         adapter = Adapter(Singleton.getFillListNotes(), this)
-        // adapter = Adapter(Singleton.getData(listNotes), this)
         recyclerView.adapter = adapter
 
         findViewById<ImageView>(R.id.addButton).setOnClickListener {
@@ -53,12 +45,6 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         }
     }
 
-/*
-    fun jsonToNote(listJson: String): MutableList<Note>{
-        return
-    }
-*/
-
     override fun onStop() {
         super.onStop()
         prefsManager.saveUserText(Singleton.listToJson())
@@ -66,7 +52,7 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
 
     override fun onResume() {
         super.onResume()
-        adapter?.updateList(Singleton.getListNotes())
+        adapter?.updateList(Singleton.getFillListNotes())
     }
 
     override fun onItemClick(item: Note) {

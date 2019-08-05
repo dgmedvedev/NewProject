@@ -24,5 +24,7 @@ class NoteEditActivity : Activity() {
             Singleton.addNotes(newNotes)
             onBackPressed()
         }
+        cancelButton.setOnClickListener { onBackPressed() }
+        backButtonArrow.setOnClickListener { onBackPressed() }
     }
 }

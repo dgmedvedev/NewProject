@@ -16,8 +16,4 @@ class AppPrefManager(context: Context) {
             .putString(textKey, text)
             .apply()
     }
-
-    fun getUserText(): String {
-        return sharedPrefs.getString(textKey, "") ?: ""
-    }
 }

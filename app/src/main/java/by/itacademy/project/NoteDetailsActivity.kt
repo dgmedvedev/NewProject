@@ -10,8 +10,6 @@ import kotlinx.android.synthetic.main.details_activity.*
 
 class NoteDetailsActivity : Activity() {
 
-    // val id = intent.getStringExtra("id")
-
     companion object {
         private const val ID_STUDENT = "ID_STUDENT"
 
@@ -49,5 +47,9 @@ class NoteDetailsActivity : Activity() {
             Singleton.deleteNote(id!!)
             onBackPressed()
         }
+
+        backButton.setOnClickListener { onBackPressed() }
+        runButton.setOnClickListener { Singleton.deleteNote(id!!)
+        onBackPressed()}
     }
 }
