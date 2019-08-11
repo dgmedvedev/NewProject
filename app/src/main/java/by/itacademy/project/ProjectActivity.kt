@@ -25,6 +25,12 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         setContentView(R.layout.activity_project)
 
         prefsManager = AppPrefManager(this)
+      
+        val listToJson = prefsManager.getUserText()
+        val listFromJson = Singleton.listFromJson(listToJson)
+
+        if (listToJson != "[]")
+            Singleton.setListNotes(listFromJson)
 
         MobileAds.initialize(this)
         adView = findViewById(R.id.adView)
@@ -36,7 +42,9 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.isNestedScrollingEnabled = false
-        adapter = Adapter(Singleton.getFillListNotes(), this)
+
+        adapter = Adapter(Singleton.getListNotes(), this)
+
         recyclerView.adapter = adapter
 
         findViewById<ImageView>(R.id.addButton).setOnClickListener {
