@@ -25,13 +25,24 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         setContentView(R.layout.activity_project)
 
         prefsManager = AppPrefManager(this)
-        val listJson = prefsManager.getUserText()
-        // prefsManager работает и сохраняет listJson, проверено
 
-        /*
-        val listNotes: Note = Gson().fromJson<Note>(listJson, Note::class.java)
-        здесь нужно подумать, как преобразовать не в Note, а MutableList<Note>
-        */
+        val listToJson = prefsManager.getUserText()
+        val listFromJson = Singleton.listFromJson(listToJson)
+
+        if (listToJson != "[]")
+            Singleton.setListNotes(listFromJson)
+
+        /**
+        val noteList = NoteList()
+        noteList.addNote(Note("1", "text 1", "header 1"))
+        noteList.addNote(Note("2", "text 2", "header 2"))
+        noteList.addNote(Note("3", "text 3", "header 3"))
+        val noteListToJson: String = Gson().toJson(noteList)
+        val noteListFromJson: NoteList = Gson().fromJson(noteListToJson, NoteList::class.java)
+
+        println("noteListToJson: $noteListToJson")
+        println("noteListFromJson: $noteListToJson")
+        **/
 
         MobileAds.initialize(this)
         adView = findViewById(R.id.adView)
@@ -43,8 +54,7 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.isNestedScrollingEnabled = false
-        adapter = Adapter(Singleton.getFillListNotes(), this)
-        // adapter = Adapter(Singleton.getData(listNotes), this)
+        adapter = Adapter(Singleton.getListNotes(), this)
         recyclerView.adapter = adapter
 
         findViewById<ImageView>(R.id.addButton).setOnClickListener {
@@ -52,12 +62,6 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
             startActivity(intent)
         }
     }
-
-/*
-    fun jsonToNote(listJson: String): MutableList<Note>{
-        return
-    }
-*/
 
     override fun onStop() {
         super.onStop()
