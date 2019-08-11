@@ -19,13 +19,13 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("D:/medvedev/keys_and_apk/dev_project_keystory.jks")
+            storeFile file("D:/dev_project_keystory.jks")
             storePassword "123456"
             keyAlias "project"
             keyPassword "123456"
         }
         debug {
-            storeFile file("D:/medvedev/keys_and_apk/dev_project_keystory.jks")
+            storeFile file("D:/dev_project_keystory.jks")
             storePassword "123456"
             keyAlias "project"
             keyPassword "123456"
