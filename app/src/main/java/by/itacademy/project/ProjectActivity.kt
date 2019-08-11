@@ -60,7 +60,7 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
 
     override fun onResume() {
         super.onResume()
-        adapter?.updateList(Singleton.getFillListNotes())
+        adapter?.updateList(Singleton.getListNotes())
     }
 
     override fun onItemClick(item: Note) {
