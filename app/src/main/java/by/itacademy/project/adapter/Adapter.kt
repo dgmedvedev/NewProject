@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import by.itacademy.project.Note
 import by.itacademy.project.R
 
-class Adapter(private var items:List<Note>, private val listener: onClickListener):
-RecyclerView.Adapter<Holder>(){
+class Adapter(private var items: List<Note>, private val listener: onClickListener) :
+    RecyclerView.Adapter<Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_notes,parent,false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_notes, parent, false)
         val holder = Holder(view)
 
         holder.itemView.setOnClickListener {
@@ -28,7 +28,7 @@ RecyclerView.Adapter<Holder>(){
         return items.size
     }
 
-    fun updateList(newItems:MutableList<Note>){
+    fun updateList(newItems: MutableList<Note>) {
         items = newItems
         notifyDataSetChanged()
     }

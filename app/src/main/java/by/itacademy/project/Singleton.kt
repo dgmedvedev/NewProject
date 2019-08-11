@@ -15,7 +15,7 @@ object Singleton {
     fun setListNotes(list: MutableList<Note>){
         this.listNotes = list
     }
-
+  
     fun addNotes(note: Note) {
         listNotes.add(note)
     }

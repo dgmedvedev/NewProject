@@ -25,24 +25,12 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         setContentView(R.layout.activity_project)
 
         prefsManager = AppPrefManager(this)
-
+      
         val listToJson = prefsManager.getUserText()
         val listFromJson = Singleton.listFromJson(listToJson)
 
         if (listToJson != "[]")
             Singleton.setListNotes(listFromJson)
-
-        /**
-        val noteList = NoteList()
-        noteList.addNote(Note("1", "text 1", "header 1"))
-        noteList.addNote(Note("2", "text 2", "header 2"))
-        noteList.addNote(Note("3", "text 3", "header 3"))
-        val noteListToJson: String = Gson().toJson(noteList)
-        val noteListFromJson: NoteList = Gson().fromJson(noteListToJson, NoteList::class.java)
-
-        println("noteListToJson: $noteListToJson")
-        println("noteListFromJson: $noteListToJson")
-        **/
 
         MobileAds.initialize(this)
         adView = findViewById(R.id.adView)
@@ -54,7 +42,9 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.isNestedScrollingEnabled = false
+
         adapter = Adapter(Singleton.getListNotes(), this)
+
         recyclerView.adapter = adapter
 
         findViewById<ImageView>(R.id.addButton).setOnClickListener {
@@ -70,7 +60,7 @@ class ProjectActivity : Activity(), Adapter.onClickListener {
 
     override fun onResume() {
         super.onResume()
-        adapter?.updateList(Singleton.getListNotes())
+        adapter?.updateList(Singleton.getFillListNotes())
     }
 
     override fun onItemClick(item: Note) {

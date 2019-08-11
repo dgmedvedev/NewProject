@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorPrimary">#FFC107</color>
+    <color name="colorPrimaryDark">#FFC107</color>
     <color name="colorAccent">#D81B60</color>
     <color name="backgroundApp">#FFCC80</color>
     <color name="nameApp">#000000</color>
-    <color name="itemNoApprove">#F359AC</color>
+    <color name="itemNoApprove">#70F15DA9</color>
 </resources>
